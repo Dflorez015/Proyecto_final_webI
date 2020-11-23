@@ -1,0 +1,21 @@
+body{
+    font-family: sans-serif, Arial;
+}
+
+.div-center{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    min-height: 100vh;
+    padding-bottom: 25vh;
+}
+
+#login_cont{
+    max-width: 40rem;
+    margin-bottom: 25vh;
+}
+
+#center-register{
+    padding-top: 8vh;
+    justify-content: center;
+}
