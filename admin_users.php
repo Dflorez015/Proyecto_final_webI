@@ -7,7 +7,7 @@ include('public/includes/header.php'); ?>
             <h3>Usuarios</h3>
         </div>
         <div class="table-responsive-sm ">
-            <table class="table table-bordered">
+            <table class="table table-bordered d-block"style="max-height: 500px;overflow-y: auto; " >
                 <thead class="thead-dark text-center">
                     <tr>
                         <th scope="col">ID</th>
@@ -20,7 +20,7 @@ include('public/includes/header.php'); ?>
                         <th scope="col">Editar</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody  ">
                     <?php  # petición de usuarios y categoria de usuario
                     $query = "SELECT ID, Nombre, Apellido, Telefono, Correo, Estado, ID_Tipo_Usuario FROM usuario";
                     $result_usuarios = mysqli_query($conn, $query);

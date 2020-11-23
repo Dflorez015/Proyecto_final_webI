@@ -12,8 +12,7 @@ if (isset($_GET["id_cat"]) && isset($_GET["valor"])) {
         } else {
             header('location: ../categoria_servicio.php');
         }
-    } else {print_r('<div class="alert alert-danger" role="alert"> Escoja una categoría
-        </div>');
+    } else {
         header('location: ../categoria_servicio.php');
     }
 }

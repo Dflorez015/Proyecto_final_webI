@@ -63,8 +63,10 @@ if (isset($_GET['id'])) {
                         <select name="select_box_estado" id="select_estado" class="form-control">
                             <?php if ($row['Estado'] == '1') { ?>
                                 <option value="1" selected="selected">Activo</option>
-                            <?php } else { ?>
                                 <option value="0">Inactivo</option>
+                            <?php } else { ?>
+                                <option value="0" selected>Inactivo</option>
+                                <option value="1">Activo</option>
                             <?php } ?>
                         </select>
                     </div>

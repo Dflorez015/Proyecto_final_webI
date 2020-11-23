@@ -24,12 +24,15 @@
                     if (isset($_SESSION['user_id'])) { ?>
                         <?php if ($_SESSION['tipo_id'] == '3') { ?>
                             <li class="nav-item active">
-                                <a class="nav-link" href="database/crear_solicitud.php">Crear</a>
+                                <a class="nav-link" href="principal_usuario.php">Crear</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="database/consultar_solicitud.php">Consultar</a>
+                                <a class="nav-link" href="consultar.php">Consultar requerimiento</a>
                             </li>
                         <?php } elseif ($_SESSION['tipo_id'] == '2') { ?>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="consultar_requerimiento_soporte.php">Consultar requerimientos de los clientes</a>
+                            </li>
                         <?php } else { ?>
                             <li class="nav-item active">
                                 <a class="nav-link" href="admin_users.php">Usuarios</a>

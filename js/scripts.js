@@ -29,6 +29,30 @@ function recargar_lista() {
     });
 }
 
+//Servicios del lado del usuario
+function recargar_servicios(){
+    $.ajax({
+        type: "POST",
+        url:"database/mostrar_serv_user.php",
+        data:"categoria=" + $('#select_cat_user').val(),
+        success:function(r){
+            $('#select_servicio_user').html(r);
+        }
+    });
+}
+
+//Requerimientos del lado del soporte
+function recargar_requerimientos() {
+    $.ajax({
+        type: "POST",
+        url: "database/mostrar_req_soporte.php",
+        data: "categoria=" + $('#select_cat_soporte').val(),
+        success: function (r) {
+            $('#select_servicio_soporte').html(r);
+        }
+    });
+}
+
 function crear_serv() {
     var categoria = $('#select_cat').val();
     var valor = document.getElementById('serv_name').value;
@@ -40,9 +64,17 @@ function crear_serv() {
     return false;
 }
 
+
+
 $(document).ready(function () {
 
     $('#select_cat').change(function () {
         recargar_lista();
+    });
+    $('#select_cat_soporte').change(function (){
+        recargar_requerimientos();
+    });
+    $('#select_cat_user').change(function () {
+        recargar_servicios();
     });
 });

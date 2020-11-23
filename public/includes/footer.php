@@ -1,6 +1,6 @@
     <footer class="bd-footer text-white bg-dark">
         <div class="container-fluid p-3 p-md-5">
-            <p>Diseñado por Jaisson De Alba, Duvan Andres Florez Ardila y Jesus David Movilla Gomez</p>
+            <p>Diseñado por Jaisson De Alba, David Cermeño, Duvan Andres Florez Ardila y Jesus David Movilla Gomez</p>
         </div>
     </footer>
 
