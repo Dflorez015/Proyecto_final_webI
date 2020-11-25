@@ -14,7 +14,26 @@
         if(!isset($resul)){
             die('Error al registrar');
         }else{
-            header('location: ../principal_usuario.php');
+            $query_correo = "SELECT Correo, Nombre, Apellido, ID_requerimiento FROM usuario, requerimiento
+             WHERE ID = '$usuario_sol' AND requerimiento.Usuario_solicitante = usuario.ID ORDER BY requerimiento.Fecha_creacion DESC LIMIT 1 ";
+            $res_correo = mysqli_query($conn, $query_correo);            
+            while($row = mysqli_fetch_row($res_correo)){
+                $correo = $row[0];
+                $nombre = $row[1];
+                $apellido = $row[2];
+                $codigo = $row[3];
+                $asunto = "Requerimiento solicitado";
+                $msg = "Descripción del requerimiento:".$descripcion."\r\n"."Ubicación: ".$ubicacion."\r\n"."Código: ".$codigo;
+                $header = "From: Last_Hour_Associate@gmail.com". "\r\n";
+                $header.= "Reply-To: Last_Hour_Associate@gmail.com"."\r\n";
+                $header.= "X-Mailer: PHP/". phpversion();
+                $mail = mail($correo, $asunto,$msg, $header);
+                if($mail){
+                    header('location: ../principal_usuario.php');
+                }else{
+                    die('Error al mandar el mensaje a su correo');
+                }                
+            }
         }
     }
 ?>

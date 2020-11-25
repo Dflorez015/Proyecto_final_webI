@@ -10,7 +10,7 @@ function preguntar(id, estado) {
     }
 }
 
-// Da un get[id] a la función de editar
+// Da un get[id] a la función edit
 function actualizar_id(id) {
     window.location.href = 'edit.php?id=' + id;
 }

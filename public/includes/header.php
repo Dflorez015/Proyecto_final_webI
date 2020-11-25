@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark  shadow" role="navigation" style="background: #8BC34A;">
 
-            <a href="index.php" class="navbar-brand">Incautos services</a>
+            <a href="index.php" class="navbar-brand">Last Hour Associate</a>
             <button class="navbar-toggler navbar-toggler-rigth" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
