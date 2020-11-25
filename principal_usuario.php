@@ -1,18 +1,33 @@
-<?php require 'db.php';
+<?php
 include('public/includes/header.php'); ?>
-<div class="container">
-    <div class="div-center">
-        <div class="card text-center shadow-lg  mb-5 bg-white rounded " id="login_cont">
-            <div class="card-header bg-dark text-white">
-                Usuario
+<div class="container-xl col-xl-8" style="padding-bottom : 25vh;">
+    <div id="center-register">
+        <div class="pt-2">
+            <div class="form-group">
+                <button name="validar" class="btn btn-success" data-toggle="modal" data-target="#crear">Crear requerimiento</button>
             </div>
-            <div class="card-body text-dark">
-                <p class="card-text">
-                    <div class="form-group">
-                        <button name="validar" class="btn btn-success" data-toggle="modal" data-target="#crear">Crear</button>
-                        <a href="consultar.php" role="button" class="btn btn-warning">Consultar</a>
-                    </div>
-                </p>
+            <div class="bg-dark text-white text-center">
+                <h3>Requerimientos</h3>
+            </div>
+            <div class="d-block position-relative overflow-auto" style="height: 500px;">
+                <table class="table table-bordered">
+                    <thead class="thead-dark text-center">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Servicio</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Ubicación</th>
+                            <th scope="col">Fecha creación</th>
+                            <th scope="col">Fecha atención</th>
+                            <th scope="col">Fecha finalización</th>
+                            <th scope="col">Id del técnico</th>
+                            <th scope="col">Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center"  id="select_req_user"></tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -28,32 +43,21 @@ include('public/includes/header.php'); ?>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="database/guardar_solicitud.php?id=<?php $_SESSION['user_id']?>" method="POST">
+                    <form action="database/guardar_solicitud.php?id=<?php $_SESSION['user_id'] ?>" method="POST">
                         <div class="form-group">
                             <label for="select_cat_user">Categoria principal</label>
                             <select name="select_cat_user" id="select_cat_user" class="form-control" required>
-                                <option value="0">--Selecione una categoría--</option>
-
-                                <?php $query_categoria = "SELECT * FROM categoria";
-                                $record_categoria = mysqli_query($conn, $query_categoria);
-                                while ($result_categoria = mysqli_fetch_array($record_categoria)) { ?>
-                                    <option value="<?php echo $result_categoria['ID_categoria'] ?>"><?php echo $result_categoria['Categoria_valor'] ?></option>
-                                <?php } ?>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="select_servicio_user">Tipo de servicio</label>
                             <select class="form-control" id="select_servicio_user" name="select_servicio_user" required>
-                                <option>--Selecione un servicio--</option>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="ds">Descripción de la solicitud</label>
                             <input type="text" class="form-control" id="ds" name="ds" placeholder="Descripción de la solicitud" required>
                         </div>
-
                         <div class="form-group">
                             <label for="ue">Ubicación dentro de la empresa</label>
                             <input type="text" class="form-control" id="ue" name="ue" placeholder="Ubicación dentro de la empresa" required>
@@ -67,5 +71,5 @@ include('public/includes/header.php'); ?>
             </div>
         </div>
     </div>
-
-    <?php include('public/includes/footer.php') ?>
+</div>
+<?php include('public/includes/footer.php') ?>

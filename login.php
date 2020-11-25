@@ -22,6 +22,7 @@
                                     <label for="dir_pass">Contraseña</label>
                                     <input type="password" name="pass" class="form-control" id="dir_pass" required>
                                 </div>
+                                <!-- Error si no valida-->
                                 <?php if (isset($_SESSION['error_validation'])) { ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?= $_SESSION['error_validation'] ?>

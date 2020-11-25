@@ -1,4 +1,4 @@
-<?php require 'db.php';
+<?php 
 $tipo_id = '';
 if (isset($_GET['tipo_id'])) {
     $tipo_id = $_GET['tipo_id'];
@@ -48,13 +48,8 @@ include('public/includes/header.php'); ?>
                                     <input type="hidden" name="tipo_id" value="<?php echo $tipo_id ?>">
                                     <div class="form-group">
                                         <label for="select_tipo_usuario">Tipo de usuario</label>
-                                        <select name="select_box_tipo_usuario" id="select_tipo_usuario" class="form-control">
+                                        <select name="select_tipo_usuario" id="select_tipo_usuario" class="form-control">
 
-                                            <?php $query_tipo_usuarios = "SELECT * FROM tipo_usuario";
-                                            $record_categoria = mysqli_query($conn, $query_tipo_usuarios);
-                                            while ($result_categoria = mysqli_fetch_array($record_categoria)) { ?>
-                                                <option value="<?php echo $result_categoria['ID_tipo_usuario'] ?>"><?php echo $result_categoria['Categoria'] ?></option>
-                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet " href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Mesa de servicios para las solicitudes</title>
 </head>
 
@@ -24,10 +24,7 @@
                     if (isset($_SESSION['user_id'])) { ?>
                         <?php if ($_SESSION['tipo_id'] == '3') { ?>
                             <li class="nav-item active">
-                                <a class="nav-link" href="principal_usuario.php">Crear</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="consultar.php">Consultar requerimiento</a>
+                                <a class="nav-link" href="principal_usuario.php">Crear y consultar requerimientos</a>
                             </li>
                         <?php } elseif ($_SESSION['tipo_id'] == '2') { ?>
                             <li class="nav-item active">

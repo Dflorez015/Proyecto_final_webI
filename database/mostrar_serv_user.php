@@ -7,7 +7,7 @@ if(isset($_POST['categoria'])){
     
     $cadena = "<option>--Selecione un servicio--</option>";
     while($row = mysqli_fetch_row($result)){
-        $cadena = $cadena.'<option value="'.$row[1].'">'.$row[2].'</option>';
+        $cadena = $cadena.'<option value="'.$row[0].'">'.$row[2].'</option>';
     }
     echo $cadena;
 }

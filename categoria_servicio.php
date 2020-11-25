@@ -1,8 +1,7 @@
-<?php require 'db.php';
-include('public/includes/header.php'); ?>
-<div class="container" style="height: 80vh;padding-bottom : 25vh;">
+<?php include('public/includes/header.php'); ?>
+<div class="container-xl" style="padding-bottom : 25%;">
     <div id="center-register">
-        <div class="card col-3">
+        <div class="card col-x1-4 col-lg-4 col-md-6 col-sm-12 col-10">
             <div id="alerta_cero"></div>
             <div class="form-group">
                 <input type="submit" name="crear" class="btn btn-dark" value="Crear categoría" data-toggle="modal" data-target="#modal_cat"></input>
@@ -13,30 +12,23 @@ include('public/includes/header.php'); ?>
             <div class="form-group">
                 <label for="select_cat">Categorías</label>
                 <select name="select_cat" id="select_cat" class="form-control" required>
-                    <option value="0">--Selecione una categoría--</option>
-
-                    <?php $query_categoria = "SELECT * FROM categoria";
-                    $record_categoria = mysqli_query($conn, $query_categoria);
-                    while ($result_categoria = mysqli_fetch_array($record_categoria)) { ?>
-                        <option value="<?php echo $result_categoria['ID_categoria'] ?>"><?php echo $result_categoria['Categoria_valor'] ?></option>
-                    <?php } ?>
 
                 </select>
             </div>
         </div>
-        <div style="padding-top: 2vh;">
+        <div class="pt-2">
             <div class="bg-dark text-white text-center">
                 <h3>Servicios</h3>
             </div>
-            <div class="table-responsive-sm">
-                <table class="table table-bordered lista_limite">
+            <div class="d-block position-relative overflow-auto" style="height: 500px;">
+                <table class="table table-bordered ">
                     <thead class="thead-dark text-center">
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Servicio</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center" style="max-height: 500px;overflow-y: auto;" id="select_servicio"></tbody>
+                    <tbody class="text-center" id="select_servicio"></tbody>
                 </table>
             </div>
         </div>
@@ -94,5 +86,4 @@ include('public/includes/header.php'); ?>
     </div>
 </div>
 
-</div>
 <?php include('public/includes/footer.php'); ?>

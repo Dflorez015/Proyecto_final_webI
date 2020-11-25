@@ -13,8 +13,8 @@ if (isset($_GET['id'])) {
                 <h5 class="modal-title" id="ModalLabel">Modificando usuario</h5>
             </div>
             <div class="modal-body">
-                <?php
-                $query = "SELECT *  FROM usuario, tipo_usuario WHERE usuario.ID_Tipo_Usuario = tipo_usuario.ID_tipo_usuario AND usuario.ID = $id";
+                <?php // Edita la información de los usuarios
+                $query = "SELECT *  FROM usuario, tipo_usuario WHERE usuario.ID_Tipo_Usuario = tipo_usuario.ID_tipo_usuario AND usuario.ID = $id"; // Consulta el usuario con la id que inició sesión
                 $result_usuarios = mysqli_query($conn, $query);
                 $row = mysqli_fetch_assoc($result_usuarios);
                 ?>
@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
                     <div class="form-group">
                         <label for="select_tipo_usuario">Tipo de usuario</label>
                         <select name="select_box_tipo_usuario" id="select_tipo_usuario" class="form-control">
-                            <?php #Seleccionar y listar el tipo de usuario
+                            <?php #Listar los tipos de usuario y seleccionar el tipo que ya tenía la persona
                             $query_tipo_usuarios = "SELECT * FROM tipo_usuario";
                             $record_categoria = mysqli_query($conn, $query_tipo_usuarios);
                             while ($result_categoria = mysqli_fetch_array($record_categoria)) { ?>

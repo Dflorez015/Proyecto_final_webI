@@ -1,4 +1,3 @@
-<?php include('db.php'); ?>
 <?php include('public/includes/header.php'); ?>
 <div class="container" style="padding-top: 15vh; padding-bottom: 20vh;">
     <div class="bg-white p-5 row">
@@ -13,13 +12,19 @@
                 <p>
                     Usted está ingresando al servicio de mantenimiento de Last Hour Associated.<br>
                     Por este medio podrá realizar la solicitud de mantenimiento y un encargado se hará cargo de su solicitud lo más pronto posible.<br>
-                    Los siguientes servicios se encuentran disponibles: <br>
-                    <?php $query_categoria = "SELECT * FROM categoria";
-                    $record_categoria = mysqli_query($conn, $query_categoria);
-                    while ($result_categoria = mysqli_fetch_array($record_categoria)) { ?>
-                        <option value="<?php echo $result_categoria['ID_categoria'] ?>"><?php echo $result_categoria['Categoria_valor'] ?></option>
-                    <?php } ?>
+                    Los siguientes servicios se encuentran disponibles:
                 </p>
+                <div class="table-responsive col-xl-5 col-lg-6 col-md-9 col-sm-6 col-8 m-auto">
+                    <table class="table table-bordered d-block" style="height: 250px;overflow-y: auto; ">
+                        <thead class="thead-dark text-center">
+                            <tr>
+                                <th scope="col">Servicios</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista_serv_index">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

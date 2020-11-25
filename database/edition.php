@@ -16,7 +16,8 @@ if(isset($_POST["save"])){
     $resul = mysqli_query($conn, $query);
     if(!isset($resul)){
         die('Error al registrar');
+    }else{
+        header('location: ../admin_users.php');
     }
-    header('location: ../admin_users.php');
 }
 ?>

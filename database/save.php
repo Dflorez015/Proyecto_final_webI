@@ -11,14 +11,14 @@ if(isset($_POST['tipo_id'])){
             $direccion = $_POST["direccion"];
             $tel = $_POST["tel"];
             $email = $_POST["email"];
-            $tipo = $_POST["select_box_tipo_usuario"];
+            $tipo = $_POST["select_tipo_usuario"];
         
             $sql = "INSERT INTO usuario(Nombre, Apellido, Contrasenia, Direccion, Telefono, Correo, ID_Tipo_Usuario)
             VALUES ('$name', '$last_name', '$pass', '$direccion', '$tel', '$email', '$tipo')";
             $resul = mysqli_query($conn, $sql);
             if(!isset($resul)){
                 die('Error al registrar');
-            }header('location: ../admin_users.php');
+            }else{header('location: ../admin_users.php');}
         }
 
     }
