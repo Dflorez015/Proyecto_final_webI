@@ -13,7 +13,7 @@
         $resul = mysqli_query($conn, $sql);
         if(!isset($resul)){
             die('Error al registrar');
-        }else{
+        }else{// enviar email al usuario
             $query_correo = "SELECT Correo, Nombre, Apellido, ID_requerimiento FROM usuario, requerimiento
              WHERE ID = '$usuario_sol' AND requerimiento.Usuario_solicitante = usuario.ID ORDER BY requerimiento.Fecha_creacion DESC LIMIT 1 ";
             $res_correo = mysqli_query($conn, $query_correo);            
@@ -23,7 +23,9 @@
                 $apellido = $row[2];
                 $codigo = $row[3];
                 $asunto = "Requerimiento solicitado";
-                $msg = "Descripción del requerimiento:".$descripcion."\r\n"."Ubicación: ".$ubicacion."\r\n"."Código: ".$codigo;
+                $msg = "Hola ".$nombre." ".$apellido."su solicitud fue enviada con exito."."\r\n".
+                "Descripción del requerimiento:".$descripcion."\r\n".
+                "Ubicación: ".$ubicacion."\r\n"."Código: ".$codigo;
                 $header = "From: Last_Hour_Associate@gmail.com". "\r\n";
                 $header.= "Reply-To: Last_Hour_Associate@gmail.com"."\r\n";
                 $header.= "X-Mailer: PHP/". phpversion();

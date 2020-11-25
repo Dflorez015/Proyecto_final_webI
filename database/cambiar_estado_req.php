@@ -25,20 +25,44 @@ if(isset($_GET['id'])){
                     date_default_timezone_set('America/Bogota');
                     $fecha = date("Y-m-d H:i:s");
                     if($estado == '2'){
+                        // Cambia estado requerimiento a 2 (En proceso)
                     $queryreq ="UPDATE requerimiento SET R_estado = '$estado', Usuario_soporte = '$id_soporte',
                     Fecha_atencion = '$fecha' 
                     WHERE ID_requerimiento = '$id'";
                     }else{
+                        // Cambia estado requerimiento a 3 (Finalizado)
                         $queryreq ="UPDATE requerimiento SET R_estado = '$estado', Usuario_soporte = '$id_soporte',
                         Fecha_finalizacion = '$fecha' 
                         WHERE ID_requerimiento = '$id'";
                     }
+                        // Se ejecuta el cambio
                     $resul = mysqli_query($conn, $queryreq);
                     if(!isset($resul)){
                         die('Error al cambiar de estado');
                     }else{
+                        //  Se envia un Email a usuario si se cambió el estado del requerimiento
+                        $sql = "SELECT Correo, Nombre, Apellido, Valor_estado_req FROM usuario, requerimiento, estado_requerimiento
+                        WHERE requerimiento.ID_requerimiento = '$id' AND requerimiento.Usuario_solicitante = usuario.ID AND requerimiento.R_estado = estado_requerimiento.ID_estado_requerimiento";
+                        $res = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($res)){
+                            $correo = $row[0];
+                            $nombre = $row[1];
+                            $apellido = $row[2];
+                            $estado_v = $row[3];
+                            $asunto = "Requerimiento solicitado";
+                            $msg = "Hola ".$nombre." ".$apellido." la solicitud cuyo código es: ".$id." se encuentra: ".$estado_v;
+                            $header = "From: Last_Hour_Associate@gmail.com". "\r\n";
+                            $header.= "Reply-To: Last_Hour_Associate@gmail.com"."\r\n";
+                            $header.= "X-Mailer: PHP/". phpversion();
+                            $mail = mail($correo, $asunto,$msg, $header);
+                            if($mail){
+                                header('location: ../principal_usuario.php');
+                            }else{
+                                die('Error al mandar el mensaje a su correo');
+                            }                
+                        }
                         header('location: ../consultar_requerimiento_soporte.php');
-                      }
+                    }
                 }
             }
         }else{
