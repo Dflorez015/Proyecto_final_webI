@@ -39,8 +39,9 @@ if(isset($_POST['tipo_id'])){
         $resul = mysqli_query($conn, $sql);
         if(!isset($resul)){
             die('Error al registrar');
+        }else{
+        	header('location: ../login.php');
         }
-        echo 'Aquí va lo del correo, para validar y eso';
     }
 }
 ?>
